@@ -47,18 +47,12 @@ function signToken(user) {
 
 module.exports = {
   Query: {
-    async getAllUsers(_, { input }, context) {
+    async getAllUsers(_, {}, context) {
       const user = authCheck(context);
-
-      const { offset, limit } = input;
 
       if (user.role === 'admin') {
         try {
           const users = await User.find().sort({ createdAt: -1 });
-          if (limit === 0) {
-            return users.slice(offset);
-          }
-          users = users.slice(offset, offset + limit);
           return users;
         } catch (err) {
           throw new Error(err);
