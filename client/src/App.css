@@ -1,0 +1,14 @@
+.form-container{
+    width: 450px;
+    margin: auto;
+}
+
+.form-lower-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.log-container{
+    width: 500px;
+    margin: auto;
+}
