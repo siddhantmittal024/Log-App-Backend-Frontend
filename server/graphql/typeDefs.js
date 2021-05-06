@@ -14,6 +14,7 @@ module.exports = gql`
     role: String!
     createdAt: String!
   }
+  
   type Logs {
     id: ID!
     phoneNumber: String!
@@ -27,10 +28,6 @@ module.exports = gql`
     password: String!
     role: String
     confirmPassword: String!
-  }
-  input Paginate {
-    offset: Int
-    limit: Int
   }
   input userInputUpdate {
     name: String
