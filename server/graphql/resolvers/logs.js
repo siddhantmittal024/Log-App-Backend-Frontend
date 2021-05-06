@@ -17,11 +17,18 @@ const validateLogData = (phoneNumber) => {
 
 module.exports = {
   Query: {
-    async getUserLogs(_, {}, context) {
+    async getUserLogs(_, { input }, context) {
       const user = authCheck(context);
+
+      const { offset, limit } = input;
 
       try {
         const logs = await Logs.find({ user: user.id }).sort({ createdAt: -1 });
+        if (limit === 0) {
+          return logs.slice(offset);
+        }
+        logs = logs.slice(offset, offset + limit);
+        
         return logs;
       } catch (err) {
         throw new Error(err);

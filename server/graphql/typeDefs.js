@@ -29,10 +29,15 @@ module.exports = gql`
     role: String
     confirmPassword: String!
   }
+  input Paginate{
+    offset: Int
+    limit: Int
+  }
+  
   input userInputUpdate {
-    name: String
-    email: String
-    password: String
+    name: String!
+    email: String!
+    password: String!
     role: String
   }
   type Mutation {
